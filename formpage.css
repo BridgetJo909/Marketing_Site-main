@@ -1,0 +1,43 @@
+body {
+  background-color: SteelBlue
+}
+h1 {
+  text-align:center;
+  color:white;
+}
+h2 {
+  text-align:center;
+  color:white;
+}
+div.client_form {
+  color:white;
+  text-align: center;
+}
+div.project_form {
+  color:white;
+  text-align: center;
+}
+select {
+  width: 20%;
+  padding: 5px 6px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+ul.nav_bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+li{
+  float:left;
+}
+a {
+  display: block;
+  padding: 10px;
+  background-color: LightSteelBlue
+}
+li a:hover {
+  background-color: PowderBlue;
+}
