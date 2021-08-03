@@ -9,8 +9,9 @@
   <li><a href="search.html">Search Database</a></li>
 </ul><br><br>
 <h1>New Client & Project Forms</h1>
-<h2>Client Information</h2><div class="client_form">
-<form action="/client_form.php" target="_self" method="post">
+<h2>Client Information</h2>
+<div class="client_form">
+<form action="connect.php" target="_self" method="post">
   <label for="clientName">Name of Client</label><br>
     <input type="text" id="clientName" name="clientName"><br>
   <label for="clientEmail">Client Email</label><br>
@@ -19,8 +20,8 @@
     <input type="text" id="actName" name="actName"><br>
   <label for="City">City</label><br>
     <input type="text" id="City" name="City"><br>
-  <label for="State/Province">State/Province</label><br>
-    <select id="State/Province" name="State/Province"><br>
+  <label for="StateProvince">State/Province</label><br>
+    <select id="StateProvince" name="StateProvince"><br>
     <option value="AL">Alabama</option>
   	<option value="AK">Alaska</option>
   	<option value="AZ">Arizona</option>
@@ -100,14 +101,11 @@
   <label for="company">Associated Label or Company</label><br>
     <input type="text" id="company" name="company"><br>
     <small>(Write NA for independent)</small><br><br>
-  <input type="submit" onclick="alert('Client form submitted')" value="Submit">
-</form></div>
+</div>
+<div class="project_form">
 <h2>Project Information</h2><div class="project_form">
-<form action="/project_form.php">
-  <label for="actName">Name of Act</label><br>
-    <input type="text" id="actName" name="actName"><br>
   <label for="startDate">Start Date</label><br>
-    <input type="date" id="startDate" name="startDate"><br>
+    <input type="date" id="startDate" name="startDate" value=><br>
   <label for="endDate">End Date</label><br>
     <input type="date" id="endDate" name="endDate"><br>
   <label for="monthlySpot">Spotify Monthly Listeners
@@ -117,28 +115,31 @@
     <input type="number" id="epkType" name="epkType"><br>
   <label for="genre">Genre</label><br>
     <input type="text" id="genre" name="genre"><br><br>
-  Outlets Targeted<br>
-    <input type="checkbox" id="spotify" name="spotify" value="Spotify">
+  Outlets Targeted   <!-- spotify=sp ap=apple music youtube=yt ra=radio bl=blogs ws=website/seo
+    ig=instagram tt=tiktok ev=event mkt --><br>
+    <input type="checkbox" id="spotify" name="outlet[]" value="sp">
     <label for="spotify">Spotify</label>
-    <input type="checkbox" id="apple" name="apple" value="AppleMusic">
+    <input type="checkbox" id="apple" name="outlet[]" value="ap">
     <label for="apple">Apple Music</label>
-    <input type="checkbox" id="youtube" name="youtube" value="YouTube">
+    <input type="checkbox" id="youtube" name="outlet[]" value="yt">
     <label for="youtube">YouTube</label><br>
-    <input type="checkbox" id="radio" name="radio" value="Radio">
+    <input type="checkbox" id="radio" name="outlet[]" value="ra">
     <label for="radio">Radio</label>
-    <input type="checkbox" id="blogs" name="blogs" value="Blogs">
+    <input type="checkbox" id="blogs" name="outletp[]" value="bl">
     <label for="blogs">Publications & Blogs</label>
-    <input type="checkbox" id="website" name="website" value="website">
+    <input type="checkbox" id="website" name="outlet[]" value="ws">
     <label for="website">Website/SEO</label><br>
-    <input type="checkbox" id="instagram" name="instagram" value="Instagram">
+    <input type="checkbox" id="instagram" name="outlet[]" value="ig">
     <label for="Instagram">Instagram</label>
-    <input type="checkbox" id="tiktok" name="tiktok" value="TikTok">
+    <input type="checkbox" id="tiktok" name="outlet[]" value="tt">
     <label for="tiktok">TikTok</label>
-    <input type="checkbox" id="event" name="event" value="Event">
+    <input type="checkbox" id="event" name="outlet[]" value="ev">
     <label for="event">Event Marketing</label><br><br>
+  <label for="hrRate">Hourly Rate</label><br>
+  <input type="number" id="hrRate" name="hrRate"><br>
   <label for="comments">Additional Information</label><br>
     <input type="text" id="comments" name="comments" size="100s"><br>
-  <input type="submit" onclick="alert('Project form submitted')" value="Submit">
-</form></div>
+  <input type="submit" onclick="alert('Forms submitted')" value="Submit">
+</div></form>
 </body>
 </html>
