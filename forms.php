@@ -105,7 +105,7 @@
 <div class="project_form">
 <h2>Project Information</h2><div class="project_form">
   <label for="startDate">Start Date</label><br>
-    <input type="date" id="startDate" name="startDate" value=><br>
+    <input type="date" id="startDate" name="startDate"><br>
   <label for="endDate">End Date</label><br>
     <input type="date" id="endDate" name="endDate"><br>
   <label for="monthlySpot">Spotify Monthly Listeners

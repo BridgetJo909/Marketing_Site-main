@@ -1,55 +1,72 @@
 <?php
 //DB connection
-$user='root';
-$pass='';
-$db='clientdb';
+$server = 'localhost';
+$user = 'root';
+$pass = '';
+$dbname = 'clientdb';
 
 //create connection
-$conn=new mysqli('localhost', $user, $pass, $db)
-
-//check connection
-if ($conn->connect_error) {
-    die("Unable to connect: "
-        . $conn->connect_error);
+$conn = mysqli_connect("$server" , "$user" , "$pass");
+if(!$conn) {
+  die("DB connection failed" . mysqli_error($conn));
 }
+$select_db = mysqli_select_db($conn, $dbname);
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+error_reporting(1);
 
-//clientform
-$clientName = $_POST['clientName']
-$clientEmail = $_POST['clientEmail']
-$actName = $_POST['actName']
-$City = $_POST['City']
-$StateProvince = $_POST['StateProvince']
-$Country = $_POST['Country']
-$clientSource = $_POST['clientSource']
-$company = $_POST['company']
-$startDate = $_POST['startDate']
-$endDate = $_POST['endDate']
-$monthlySpot = $_POST['monthlySpot']
-$epkType = $_POST['epkType']
-$genre = $_POST['genre']
-$outlet = $_POST['outlet[]']
-$hrRate = $_POST['hrRate']
-$comments = $_POST['comments']
+$clientName = $_POST['clientName'];
+$clientEmail = $_POST['clientEmail'];
+$actName = $_POST['actName'];
+$City = $_POST['City'];
+$StateProvince = $_POST['StateProvince'];
+$Country = $_POST['Country'];
+$clientSource = $_POST['clientSource'];
+$company = $_POST['company'];
+$startDate = $_POST['startDate'];
+$endDate = $_POST['endDate'];
+$monthlySpot = $_POST['monthlySpot'];
+$epkType = $_POST['epkType'];
+$genre = $_POST['genre'];
+$outlet = $_POST['outlet[]'];
+$hrRate = $_POST['hrRate'];
+$comments = $_POST['comments'];
 
-//inserting queries
-$sql1 = "INSERT INTO clients VALUES ('$clientName',
-           '$clientEmail','$actName','$City','$StateProvine',
-            '$Country','$clientSource','$company' )";
-
-$sql2 = "INSERT INTO projects VALUES ('$startDate','$endDate','$monthlySpot',
+//inserting queries, 1 is client table 2 is project
+$sql = "INSERT INTO clients (clientName, clientEmail, actName,
+          City, StateProvince, Country, clientSource, company)
+          VALUES ('$clientName', '$clientEmail','$actName','$City','$StateProvince',
+            '$Country','$clientSource','$company');
+        INSERT INTO projects (startDate, endDate, monthlySpot,
+          epkType, genre, outlet, hrRate, comments)
+          VALUES ('$startDate','$endDate','$monthlySpot',
           '$epkType','$genre','$outlet','$hrRate','$comments')";
 
-if(mysqli_query($conn, $sql1, $sql2)){
-  echo "<h3>data stored in a database successfully."
-          . " Please browse your localhost php my admin"
-          . " to view the updated data</h3>";
-  echo nl2br("\n$clientName\n $clientEmail\n "
-          . "$actName\n $City\n $StateProvince");
-} else{
-    echo "ERROR: Uh oh, something went wrong. Check the db."
-          . mysqli_error($conn);
-}
+$mysqli = new mysqli($server, $user, $pass, $dbname);
+$result = $mysqli -> multi_query($sql);
 
+if($result){echo "inserted";}else{echo"error";}
+/*if ($mysqli -> multi_query($sql)); {
+  do {
+    // Store first result set
+    if($result = $mysqli -> store_result()){
+      while ($row = $result -> fetch_row()){
+        printf("%s/n"$row[0]);
+      }
+    }
+    //print divider
+    if ($mysqli->more_results()){
+      printf("--------------/n")
+    }
+  }
+} while ($mysqli -> next_result());
+  echo "New records created";
+
+  //echo nl2br("\n$clientName\n $clientEmail\n "
+        //  . "$actName\n $City\n $StateProvince");
+*/
 //close connection
-mysqli_close($conn);
+$mysqli -> close();
 ?>
